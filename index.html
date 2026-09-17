@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohamed Khalidh M — AI &amp; Machine Learning Student</title>
+<meta name="description" content="Portfolio of Mohamed Khalidh M, a B.Sc. Artificial Intelligence & Machine Learning student.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#060b14;
+    --bg-soft:#0a1220;
+    --panel:#0c1626;
+    --panel-border:#1c2c42;
+    --line:#16223a;
+    --blue:#3f7fff;
+    --cyan:#3fe6ff;
+    --ink:#eaf2fb;
+    --ink-dim:#9fb0c8;
+    --ink-mute:#5f7290;
+    --grad: linear-gradient(120deg, var(--blue), var(--cyan));
+    --font-display:'Space Grotesk', 'Inter', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'JetBrains Mono', monospace;
+    --maxw:1180px;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+  }
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  ::selection{ background:rgba(63,230,255,.25); color:#fff; }
+
+  a{ color:inherit; text-decoration:none; }
+  ul{ list-style:none; }
+  img,svg{ display:block; max-width:100%; }
+
+  .wrap{
+    width:92%;
+    max-width:var(--maxw);
+    margin:0 auto;
+  }
+
+  :focus-visible{
+    outline:2px solid var(--cyan);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  /* ---------- reveal on scroll ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(22px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  /* ---------- eyebrow / section labels ---------- */
+  .kicker{
+    font-family:var(--font-mono);
+    font-size:.78rem;
+    color:var(--cyan);
+    letter-spacing:.02em;
+    margin-bottom:14px;
+  }
+
+  .heading{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:clamp(1.8rem, 3.4vw, 2.6rem);
+    color:var(--ink);
+    letter-spacing:-0.01em;
+  }
+
+  .lede{
+    color:var(--ink-dim);
+    max-width:56ch;
+    margin-top:14px;
+    font-size:1.02rem;
+  }
+
+  section{
+    padding:120px 0;
+    border-bottom:1px solid var(--line);
+  }
+
+  section:last-of-type{ border-bottom:none; }
+
+  /* ---------- NAV ---------- */
+  header.site-nav{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:1000;
+    background:rgba(6,11,20,.72);
+    backdrop-filter:blur(16px) saturate(140%);
+    -webkit-backdrop-filter:blur(16px) saturate(140%);
+    border-bottom:1px solid rgba(63,230,255,.08);
+  }
+
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 0;
+  }
+
+  .brand{
+    font-family:var(--font-mono);
+    font-size:1.02rem;
+    color:var(--ink);
+    display:flex;
+    align-items:center;
+    gap:9px;
+  }
+
+  .brand .dot{
+    width:8px; height:8px;
+    border-radius:50%;
+    background:var(--cyan);
+    box-shadow:0 0 10px 2px rgba(63,230,255,.7);
+    display:inline-block;
+  }
+
+  .nav-links{
+    display:flex;
+    gap:34px;
+  }
+
+  .nav-links a{
+    font-size:.92rem;
+    color:var(--ink-dim);
+    position:relative;
+    padding:4px 0;
+    transition:color .25s ease;
+  }
+
+  .nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:-2px;
+    width:0%;
+    height:1px;
+    background:var(--grad);
+    transition:width .3s ease;
+  }
+
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-links a:hover::after{ width:100%; }
+
+  .nav-toggle{
+    display:none;
+    background:none;
+    border:1px solid var(--panel-border);
+    border-radius:8px;
+    width:40px; height:40px;
+    color:var(--ink);
+    font-size:1.1rem;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding-top:110px;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+
+  #net-canvas{
+    position:absolute;
+    inset:0;
+    width:100%; height:100%;
+    z-index:0;
+    opacity:.55;
+    mask-image:radial-gradient(ellipse 80% 70% at 60% 40%, #000 40%, transparent 92%);
+    -webkit-mask-image:radial-gradient(ellipse 80% 70% at 60% 40%, #000 40%, transparent 92%);
+  }
+
+  .hero-inner{
+    position:relative;
+    z-index:2;
+  }
+
+  .hero .kicker{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+
+  .hero .kicker::before{
+    content:"";
+    width:26px; height:1px;
+    background:var(--cyan);
+    display:inline-block;
+  }
+
+  .hero h1{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:clamp(2.6rem, 8.4vw, 6.2rem);
+    line-height:1.02;
+    letter-spacing:-0.02em;
+    color:var(--ink);
+  }
+
+  .hero h1 .last{
+    background:var(--grad);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+
+  .hero .role-line{
+    margin-top:22px;
+    font-family:var(--font-mono);
+    font-size:clamp(.92rem, 1.6vw, 1.08rem);
+    color:var(--ink-dim);
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  .hero .role-line .cursor{
+    display:inline-block;
+    width:9px; height:1.15em;
+    background:var(--cyan);
+    animation:blink 1.1s steps(1) infinite;
+    vertical-align:text-bottom;
+  }
+
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  .hero p.desc{
+    margin-top:26px;
+    max-width:60ch;
+    color:var(--ink-dim);
+    font-size:1.05rem;
+  }
+
+  .btn-row{
+    margin-top:38px;
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:14px 26px;
+    border-radius:10px;
+    font-weight:600;
+    font-size:.95rem;
+    font-family:var(--font-body);
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease;
+    cursor:pointer;
+    border:1px solid transparent;
+  }
+
+  .btn-primary{
+    background:var(--grad);
+    color:#04101c;
+  }
+  .btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 16px 34px rgba(63,150,255,.28);
+  }
+
+  .btn-ghost{
+    border-color:var(--panel-border);
+    color:var(--ink);
+    background:rgba(255,255,255,.02);
+  }
+  .btn-ghost:hover{
+    border-color:var(--cyan);
+    color:var(--cyan);
+    transform:translateY(-3px);
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.25fr .9fr;
+    gap:56px;
+    margin-top:56px;
+    align-items:start;
+  }
+
+  .about-text p{
+    color:var(--ink-dim);
+    margin-bottom:18px;
+    font-size:1.03rem;
+  }
+
+  .about-text p strong{ color:var(--ink); font-weight:600; }
+
+  .glass{
+    background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+    border:1px solid var(--panel-border);
+    border-radius:18px;
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+  }
+
+  .info-card{
+    padding:30px 32px;
+    position:relative;
+    overflow:hidden;
+  }
+
+  .info-card::before{
+    content:"";
+    position:absolute;
+    inset:-1px;
+    border-radius:18px;
+    padding:1px;
+    background:linear-gradient(140deg, rgba(63,127,255,.55), transparent 40%, transparent 60%, rgba(63,230,255,.4));
+    -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;
+    mask-composite:exclude;
+    pointer-events:none;
+  }
+
+  .info-card h3{
+    font-family:var(--font-mono);
+    font-size:.92rem;
+    color:var(--cyan);
+    margin-bottom:22px;
+    letter-spacing:.02em;
+  }
+
+  .info-row{
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+    padding:13px 0;
+    border-bottom:1px solid var(--line);
+    font-size:.94rem;
+  }
+  .info-row:last-child{ border-bottom:none; padding-bottom:0; }
+  .info-row:first-child{ padding-top:0; }
+
+  .info-row span{ color:var(--ink-mute); }
+  .info-row strong{ color:var(--ink); font-weight:600; text-align:right; }
+
+  /* ---------- EDUCATION (timeline) ---------- */
+  .timeline{
+    margin-top:56px;
+    position:relative;
+    padding-left:34px;
+  }
+
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:5px; top:6px; bottom:6px;
+    width:1px;
+    background:linear-gradient(180deg, var(--cyan), var(--panel-border) 85%);
+  }
+
+  .tl-item{
+    position:relative;
+    padding-bottom:44px;
+  }
+  .tl-item:last-child{ padding-bottom:0; }
+
+  .tl-item::before{
+    content:"";
+    position:absolute;
+    left:-34px;
+    top:4px;
+    width:11px; height:11px;
+    border-radius:50%;
+    background:var(--bg);
+    border:2px solid var(--cyan);
+    box-shadow:0 0 0 4px rgba(63,230,255,.08);
+  }
+
+  .tl-item .tl-year{
+    font-family:var(--font-mono);
+    font-size:.82rem;
+    color:var(--cyan);
+    margin-bottom:8px;
+    display:block;
+  }
+
+  .tl-item h3{
+    font-family:var(--font-display);
+    font-size:1.25rem;
+    font-weight:600;
+    color:var(--ink);
+    margin-bottom:4px;
+  }
+
+  .tl-item h4{
+    font-weight:500;
+    font-size:.96rem;
+    color:var(--ink-dim);
+    margin-bottom:14px;
+  }
+
+  .tl-stats{
+    display:flex;
+    gap:28px;
+    flex-wrap:wrap;
+  }
+
+  .tl-stat{
+    background:rgba(63,230,255,.05);
+    border:1px solid var(--panel-border);
+    border-radius:10px;
+    padding:10px 16px;
+    font-size:.86rem;
+  }
+
+  .tl-stat b{
+    display:block;
+    font-family:var(--font-display);
+    font-size:1.15rem;
+    color:var(--ink);
+    font-weight:600;
+  }
+
+  .tl-stat span{ color:var(--ink-mute); }
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid{
+    margin-top:56px;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:22px;
+  }
+
+  .skill-card{
+    padding:32px;
+    transition:transform .3s ease, border-color .3s ease;
+  }
+
+  .skill-card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(63,230,255,.35);
+  }
+
+  .skill-card .icon{
+    font-size:1.6rem;
+    margin-bottom:18px;
+  }
+
+  .skill-card h3{
+    font-family:var(--font-display);
+    font-size:1.15rem;
+    font-weight:600;
+    margin-bottom:10px;
+  }
+
+  .skill-card p{
+    color:var(--ink-dim);
+    font-size:.93rem;
+    margin-bottom:20px;
+  }
+
+  .chip-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  .chip{
+    font-family:var(--font-mono);
+    font-size:.78rem;
+    padding:6px 12px;
+    border-radius:6px;
+    color:var(--cyan);
+    background:rgba(63,230,255,.06);
+    border:1px solid rgba(63,230,255,.18);
+  }
+
+  /* ---------- PROJECT ---------- */
+  .project-wrap{
+    margin-top:56px;
+  }
+
+  .terminal{
+    background:#080f1c;
+    border:1px solid var(--panel-border);
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 30px 80px -30px rgba(63,150,255,.18);
+  }
+
+  .term-bar{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:14px 18px;
+    border-bottom:1px solid var(--line);
+    background:rgba(255,255,255,.015);
+  }
+
+  .term-dot{
+    width:10px; height:10px;
+    border-radius:50%;
+    background:#334158;
+  }
+
+  .term-title{
+    margin-left:10px;
+    font-family:var(--font-mono);
+    font-size:.8rem;
+    color:var(--ink-mute);
+  }
+
+  .term-body{
+    padding:34px 36px;
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:40px;
+  }
+
+  .term-left h3{
+    font-family:var(--font-display);
+    font-size:1.7rem;
+    font-weight:600;
+    margin-bottom:6px;
+  }
+
+  .term-tag{
+    font-family:var(--font-mono);
+    font-size:.78rem;
+    color:var(--blue);
+    margin-bottom:18px;
+    display:block;
+  }
+
+  .term-left p{
+    color:var(--ink-dim);
+    font-size:.98rem;
+    margin-bottom:24px;
+  }
+
+  .term-code{
+    font-family:var(--font-mono);
+    font-size:.86rem;
+    line-height:2;
+    color:#c7d4e6;
+  }
+
+  .term-code .fn{ color:var(--cyan); }
+  .term-code .cm{ color:var(--ink-mute); }
+  .term-code .kw{ color:var(--blue); }
+
+  .feature-list{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .feature-list li{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    font-size:.92rem;
+    color:var(--ink-dim);
+  }
+
+  .feature-list li::before{
+    content:"›";
+    color:var(--cyan);
+    font-family:var(--font-mono);
+    font-weight:600;
+  }
+
+  /* ---------- INTERESTS ---------- */
+  .interest-grid{
+    margin-top:56px;
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:18px;
+  }
+
+  .interest-card{
+    padding:34px 22px;
+    text-align:center;
+    transition:transform .3s ease, border-color .3s ease;
+  }
+
+  .interest-card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(63,230,255,.35);
+  }
+
+  .interest-card .icon{
+    font-size:1.7rem;
+    margin-bottom:14px;
+  }
+
+  .interest-card span{
+    font-size:.94rem;
+    color:var(--ink-dim);
+    font-weight:500;
+  }
+
+  /* ---------- SOFT SKILLS ---------- */
+  .soft-grid{
+    margin-top:56px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+
+  .soft-pill{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:16px 24px;
+    border-radius:999px;
+  }
+
+  .soft-pill .dotb{
+    width:8px; height:8px;
+    border-radius:50%;
+    background:var(--grad);
+    flex-shrink:0;
+  }
+
+  .soft-pill span{
+    font-size:.94rem;
+    color:var(--ink);
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact-box{
+    margin-top:56px;
+    padding:70px 50px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+
+  .contact-box::before{
+    content:"";
+    position:absolute;
+    width:420px; height:420px;
+    background:var(--blue);
+    filter:blur(160px);
+    opacity:.14;
+    top:-140px; left:50%;
+    transform:translateX(-50%);
+  }
+
+  .contact-box > *{ position:relative; z-index:1; }
+
+  .contact-box h2{
+    font-family:var(--font-display);
+    font-size:clamp(1.9rem, 4vw, 2.6rem);
+    font-weight:600;
+    margin-bottom:16px;
+  }
+
+  .contact-box p{
+    color:var(--ink-dim);
+    max-width:52ch;
+    margin:0 auto 36px;
+  }
+
+  .contact-buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:32px 0;
+    text-align:center;
+  }
+
+  footer p{
+    color:var(--ink-mute);
+    font-size:.86rem;
+    font-family:var(--font-mono);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:920px){
+    .nav-links{ display:none; }
+    .nav-toggle{ display:inline-flex; align-items:center; justify-content:center; }
+    .about-grid{ grid-template-columns:1fr; }
+    .skills-grid{ grid-template-columns:1fr 1fr; }
+    .interest-grid{ grid-template-columns:1fr 1fr; }
+    .term-body{ grid-template-columns:1fr; }
+  }
+
+  @media(max-width:600px){
+    section{ padding:80px 0; }
+    .skills-grid{ grid-template-columns:1fr; }
+    .interest-grid{ grid-template-columns:1fr 1fr; }
+    .contact-box{ padding:50px 24px; }
+    .term-body{ padding:26px 22px; }
+    .info-card{ padding:24px 22px; }
+  }
+
+  .nav-links.mobile-open{
+    display:flex;
+    position:absolute;
+    top:100%; left:0; right:0;
+    flex-direction:column;
+    background:rgba(6,11,20,.97);
+    padding:20px 6%;
+    gap:0;
+    border-bottom:1px solid var(--line);
+  }
+  .nav-links.mobile-open a{ padding:14px 0; border-bottom:1px solid var(--line); }
+  .nav-links.mobile-open a:last-child{ border-bottom:none; }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap nav-inner">
+    <a href="#home" class="brand"><span class="dot"></span>khalidh.ai</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#project">Project</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <canvas id="net-canvas" aria-hidden="true"></canvas>
+    <div class="wrap hero-inner">
+      <p class="kicker">B.SC ARTIFICIAL INTELLIGENCE &amp; MACHINE LEARNING</p>
+      <h1>Mohamed<br>Khalidh <span class="last">M</span></h1>
+      <p class="role-line">Programmer &nbsp;·&nbsp; AI/ML Enthusiast &nbsp;·&nbsp; Software Developer<span class="cursor"></span></p>
+      <p class="desc">
+        A motivated AI &amp; Machine Learning student who enjoys turning logic into
+        working software — from neural concepts on paper to code that runs, reacts,
+        and learns.
+      </p>
+      <div class="btn-row">
+        <a href="#project" class="btn btn-primary">Explore My Work</a>
+        <a href="#contact" class="btn btn-ghost">Contact Me</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap reveal">
+      <p class="kicker">About</p>
+      <h2 class="heading">Who I am</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I'm currently pursuing a <strong>B.Sc. in Artificial Intelligence &amp; Machine Learning</strong>
+            at Muthayammal College of Arts and Science (Autonomous), Rasipuram — building a foundation
+            in the logic, math and code behind intelligent systems.
+          </p>
+          <p>
+            I'm passionate about programming, Artificial Intelligence, Machine Learning and modern
+            software development, and I like understanding how things work under the hood before
+            trying to build them myself.
+          </p>
+          <p>
+            I'm dedicated to continuous learning, picking up emerging technology skills, and putting
+            them to use in real, working software.
+          </p>
+        </div>
+        <div class="glass info-card">
+          <h3>quick_info</h3>
+          <div class="info-row"><span>Name</span><strong>Mohamed Khalidh M</strong></div>
+          <div class="info-row"><span>Course</span><strong>B.Sc. AI &amp; ML</strong></div>
+          <div class="info-row"><span>Location</span><strong>Tamil Nadu, India</strong></div>
+          <div class="info-row"><span>Focus</span><strong>AI / Machine Learning</strong></div>
+          <div class="info-row"><span>GitHub</span><strong>mohamedkhalidh123</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="wrap reveal">
+      <p class="kicker">Education</p>
+      <h2 class="heading">Academic path</h2>
+      <div class="timeline">
+
+        <div class="tl-item">
+          <span class="tl-year">10th Standard</span>
+          <h3>State Board of Tamil Nadu</h3>
+          <h4>Secondary School Examination</h4>
+          <div class="tl-stats">
+            <div class="tl-stat"><b>49.4%</b><span>Overall score</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <span class="tl-year">12th Standard</span>
+          <h3>State Board of Tamil Nadu</h3>
+          <h4>Higher Secondary Examination</h4>
+          <div class="tl-stats">
+            <div class="tl-stat"><b>52.5%</b><span>Overall score</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <span class="tl-year">Ongoing</span>
+          <h3>B.Sc. Artificial Intelligence &amp; Machine Learning</h3>
+          <h4>Muthayammal College of Arts and Science (Autonomous), Rasipuram</h4>
+          <div class="tl-stats">
+            <div class="tl-stat"><b>57.7%</b><span>First year percentage</span></div>
+            <div class="tl-stat"><b>6.4</b><span>First year CGPA</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap reveal">
+      <p class="kicker">Expertise</p>
+      <h2 class="heading">Technical skills</h2>
+      <p class="lede">Languages, concepts and tools I'm currently learning and building with.</p>
+
+      <div class="skills-grid">
+        <div class="glass skill-card">
+          <div class="icon">💻</div>
+          <h3>Programming</h3>
+          <p>Core languages for building software and thinking through logic.</p>
+          <div class="chip-row">
+            <span class="chip">Python</span>
+            <span class="chip">Java</span>
+            <span class="chip">C</span>
+            <span class="chip">C++</span>
+          </div>
+        </div>
+
+        <div class="glass skill-card">
+          <div class="icon">🤖</div>
+          <h3>AI &amp; Machine Learning</h3>
+          <p>Foundations in intelligent systems and the structures that support them.</p>
+          <div class="chip-row">
+            <span class="chip">Artificial Intelligence</span>
+            <span class="chip">Machine Learning</span>
+            <span class="chip">Data Structures</span>
+          </div>
+        </div>
+
+        <div class="glass skill-card">
+          <div class="icon">🛠️</div>
+          <h3>Tools &amp; Platforms</h3>
+          <p>Everyday tools for version control, building and shipping code.</p>
+          <div class="chip-row">
+            <span class="chip">Git</span>
+            <span class="chip">GitHub</span>
+            <span class="chip">VS Code</span>
+            <span class="chip">Lovable</span>
+            <span class="chip">Bolt AI</span>
+            <span class="chip">Zai</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT -->
+  <section id="project">
+    <div class="wrap reveal">
+      <p class="kicker">Featured Project</p>
+      <h2 class="heading">Shooting Game</h2>
+
+      <div class="project-wrap">
+        <div class="terminal">
+          <div class="term-bar">
+            <span class="term-dot" style="background:#ff5f57"></span>
+            <span class="term-dot" style="background:#febc2e"></span>
+            <span class="term-dot" style="background:#28c840"></span>
+            <span class="term-title">shooting_game/main.py</span>
+          </div>
+          <div class="term-body">
+            <div class="term-left">
+              <span class="term-tag">SOFTWARE PROJECT · 2D GAME</span>
+              <h3>🎮 Shooting Game</h3>
+              <p>
+                An interactive 2D shooting game built around real-time player input,
+                object-oriented design and clean state management.
+              </p>
+              <div class="term-code">
+                <div><span class="kw">class</span> <span class="fn">Game</span>:</div>
+                <div>&nbsp;&nbsp;<span class="cm"># game loop &amp; state management</span></div>
+                <div>&nbsp;&nbsp;<span class="kw">def</span> <span class="fn">update</span>(self):</div>
+                <div>&nbsp;&nbsp;&nbsp;&nbsp;track_aim()</div>
+                <div>&nbsp;&nbsp;&nbsp;&nbsp;move_player()</div>
+                <div>&nbsp;&nbsp;&nbsp;&nbsp;check_collision()</div>
+                <div>&nbsp;&nbsp;&nbsp;&nbsp;update_score()</div>
+              </div>
+            </div>
+            <ul class="feature-list">
+              <li>Interactive 2D shooting game</li>
+              <li>Player movement</li>
+              <li>Aim tracking</li>
+              <li>Bullet trajectory</li>
+              <li>Collision detection</li>
+              <li>Shooting mechanics</li>
+              <li>Object-oriented modules</li>
+              <li>Game loops</li>
+              <li>State management</li>
+              <li>Score tracking</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERESTS -->
+  <section id="interests">
+    <div class="wrap reveal">
+      <p class="kicker">Interests</p>
+      <h2 class="heading">Areas I love</h2>
+      <div class="interest-grid">
+        <div class="glass interest-card"><div class="icon">🤖</div><span>Artificial Intelligence</span></div>
+        <div class="glass interest-card"><div class="icon">🧠</div><span>Machine Learning</span></div>
+        <div class="glass interest-card"><div class="icon">💻</div><span>Software Development</span></div>
+        <div class="glass interest-card"><div class="icon">📱</div><span>App Development</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOFT SKILLS -->
+  <section id="strengths">
+    <div class="wrap reveal">
+      <p class="kicker">Strengths</p>
+      <h2 class="heading">Professional skills</h2>
+      <div class="soft-grid">
+        <div class="glass soft-pill"><span class="dotb"></span><span>Problem Solving</span></div>
+        <div class="glass soft-pill"><span class="dotb"></span><span>Quick Learning</span></div>
+        <div class="glass soft-pill"><span class="dotb"></span><span>Effective Communication</span></div>
+        <div class="glass soft-pill"><span class="dotb"></span><span>Teamwork</span></div>
+        <div class="glass soft-pill"><span class="dotb"></span><span>Adaptability</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap reveal">
+      <p class="kicker" style="text-align:center">Contact</p>
+      <h2 class="heading" style="text-align:center">Let's connect</h2>
+      <div class="glass contact-box">
+        <h2>Open to opportunities</h2>
+        <p>
+          I'm interested in Artificial Intelligence, Machine Learning, programming
+          and software development — feel free to reach out.
+        </p>
+        <div class="contact-buttons">
+          <a href="mailto:mohamedkhalidh08@gmail.com" class="btn btn-primary">✉ Email Me</a>
+          <a href="tel:+919655360651" class="btn btn-ghost">☎ +91 96553 60651</a>
+          <a href="https://github.com/mohamedkhalidh123" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>&copy; <span id="year"></span> Mohamed Khalidh M — AI &amp; Machine Learning</p>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // mobile nav toggle
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  toggle.addEventListener('click', function(){
+    var open = links.classList.toggle('mobile-open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      links.classList.remove('mobile-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // scroll reveal
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduceMotion && 'IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+
+  // hero neural-network canvas
+  (function(){
+    var canvas = document.getElementById('net-canvas');
+    var ctx = canvas.getContext('2d');
+    var hero = canvas.parentElement;
+    var nodes = [];
+    var W, H, DPR;
+    var mouse = { x: null, y: null };
+
+    function resize(){
+      DPR = Math.min(window.devicePixelRatio || 1, 2);
+      W = hero.clientWidth;
+      H = hero.clientHeight;
+      canvas.width = W * DPR;
+      canvas.height = H * DPR;
+      canvas.style.width = W + 'px';
+      canvas.style.height = H + 'px';
+      ctx.setTransform(DPR,0,0,DPR,0,0);
+      initNodes();
+    }
+
+    function initNodes(){
+      var count = Math.max(28, Math.floor((W*H)/32000));
+      nodes = [];
+      for(var i=0;i<count;i++){
+        nodes.push({
+          x: Math.random()*W,
+          y: Math.random()*H,
+          vx: (Math.random()-0.5)*0.28,
+          vy: (Math.random()-0.5)*0.28
+        });
+      }
+    }
+
+    function step(){
+      ctx.clearRect(0,0,W,H);
+      var maxDist = Math.min(160, W/6);
+
+      for(var i=0;i<nodes.length;i++){
+        var n = nodes[i];
+        n.x += n.vx;
+        n.y += n.vy;
+        if(n.x < 0 || n.x > W) n.vx *= -1;
+        if(n.y < 0 || n.y > H) n.vy *= -1;
+      }
+
+      for(var i=0;i<nodes.length;i++){
+        for(var j=i+1;j<nodes.length;j++){
+          var a = nodes[i], b = nodes[j];
+          var dx = a.x-b.x, dy = a.y-b.y;
+          var dist = Math.sqrt(dx*dx+dy*dy);
+          if(dist < maxDist){
+            var op = (1 - dist/maxDist) * 0.5;
+            ctx.strokeStyle = 'rgba(63,230,255,' + op + ')';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      for(var i=0;i<nodes.length;i++){
+        var n = nodes[i];
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, 1.6, 0, Math.PI*2);
+        ctx.fillStyle = 'rgba(160,220,255,0.85)';
+        ctx.fill();
+      }
+
+      requestAnimationFrame(step);
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+    if(!reduceMotion){
+      requestAnimationFrame(step);
+    }
+  })();
+</script>
+
+</body>
+</html>
